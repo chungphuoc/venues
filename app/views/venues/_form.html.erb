@@ -1,0 +1,77 @@
+<%= form_for(@venue) do |f| %>
+  <% if @venue.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@venue.errors.count, "error") %> prohibited this venue from being saved:</h2>
+
+      <ul>
+      <% @venue.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+    <th width="130">Venue Name:</th>
+    <td><%= f.text_field :name, :size => 50 %></td>
+  </tr>
+  <tr>
+    <th>Address:</th>
+    <td><%= f.text_area :address, :style => "height:100px"  %></td>
+  </tr>
+  <tr>
+    <th>Postcode:</th>
+    <td><%= f.text_field :postcode, :size => 10 %></td>
+  </tr>
+  <tr>
+    <th>Telephone:</th>
+    <td><%= f.text_field :telephone, :size => 30 %></td>
+  </tr>
+  <tr>
+    <th>Fax:</th>
+    <td><%= f.text_field :fax, :size => 30 %></td>
+  </tr>
+  <tr>
+    <th>Website:</th>
+    <td><%= f.text_field :website, :size => 30 %></td>
+  </tr>
+  <tr>
+    <th>Delegate rates:</th>
+    <td>£<%= f.text_field :delegate_rates, :size => 5 %></td>
+  </tr>
+  <tr>
+    <th>Room hire rates:</th>
+    <td>£<%= f.text_field :room_hire_rates, :size => 5 %></td>
+  </tr>
+  <tr>
+    <th>Meeting capacity:</th>
+    <td><%= f.text_field :meeting_capacity, :size => 5 %></td>
+  </tr>
+  <tr>
+    <th>Catering capacity:</th>
+    <td><%= f.text_field :catering_capacity, :size => 5 %></td>
+  </tr>
+  <tr>
+    <th>No bedrooms:</th>
+    <td><%= f.text_field :no_bedrooms, :size => 5 %></td>
+  </tr>
+  <tr>
+    <th>Disabled Access:</th>
+    <td><%= f.select :disabled_access, [['Yes','true'],['No','false']] %></td>
+  </tr>
+  <tr>
+    <th>Commission:</th>
+    <td><%= f.text_field :commission, :size => 5 %></td>
+  </tr>
+  <tr>
+    <th>Notes:</th>
+    <td><%= f.text_area :notes, :style => "width:780px;height:100px" %></td>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+    <th><%= f.submit %> </th>
+  </tr>
+</table>
+<% end %>

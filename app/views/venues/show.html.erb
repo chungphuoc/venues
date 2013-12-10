@@ -1,0 +1,143 @@
+<script type="text/javascript"> 
+
+var map = null;
+var geocoder = null;
+
+function showAddress(address, name) {
+  if (geocoder) {
+    geocoder.getLatLng(
+      address,
+      function(point) {
+        if (!point) {
+          alert(address + " not found");
+        } else {
+          map.setCenter(point, 13);
+          var marker = new GMarker(point);
+          map.addOverlay(marker);
+          map.setUIToDefault();
+
+          // As this is user-generated content, we display it as
+          // text rather than HTML to reduce XSS vulnerabilities.
+          marker.openInfoWindowHtml(name);
+        }
+      }
+    );
+  }
+}
+
+function initialize() {
+  if (GBrowserIsCompatible()) {
+    map = new GMap2(document.getElementById("map_canvas"));
+    geocoder = new GClientGeocoder();
+    showAddress("<%= @venue.address %>", "<strong><%= @venue.name %></strong><br><%= @venue.address %>")
+  }
+}
+
+</script> 
+<h1><%= link_to 'Venues', venues_path() %>: <%= @venue.name %></h1>
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+    <th width="130">Venue:</th>
+    <td><%= @venue.name %> <%= link_to '(edit)', edit_venue_path(@venue) %></td>
+  </tr>
+  <tr>
+    <th>Address:</th>
+    <td><%= @venue.address %></td>
+  </tr>
+  <tr>
+    <th>Postcode:</th>
+    <td><%= @venue.postcode %></td>
+  </tr>
+  <tr>
+    <th>Telephone:</th>
+    <td><%= @venue.telephone %></td>
+  </tr>
+  <tr>
+    <th>Fax:</th>
+    <td><%= @venue.fax %></td>
+  </tr>
+  <tr>
+    <th>Website:</th>
+    <td><a href="<%= @venue.website %>"><%= @venue.website %></a></td>
+  </tr>
+  <tr>
+    <th>Delegate rates:</th>
+    <td>From £<%= @venue.delegate_rates %></td>
+  </tr>
+  <tr>
+    <th>Room hire rates:</th>
+    <td>£<%= @venue.room_hire_rates %></td>
+  </tr>
+  <tr>
+    <th>Meeting capacity:</th>
+    <td><%= @venue.meeting_capacity %></td>
+  </tr>
+  <tr>
+    <th>Catering capacity:</th>
+    <td><%= @venue.catering_capacity %></td>
+  </tr>
+  <tr>
+    <th>No bedrooms:</th>
+    <td><%= @venue.no_bedrooms %></td>
+  </tr>
+  <tr>
+    <th>Disabled Access:</th>
+    <td><%= @venue.disabled_access? ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+    <th class="commission">Commission:</th>
+    <td class="commission"><%= @venue.commission %></td>
+  </tr>
+  <tr>
+    <th>Notes:</th>
+    <td><%= @venue.notes %></td>
+  </tr>
+  <tr>
+    <th><%= link_to "Contacts:", venue_contacts_path(@venue) %></th>
+    <td>
+       <%- for contact in @venue.contact -%>
+       <%= link_to contact.contact_name, [@venue, contact] %> — <%= contact.contact_role %><br>
+       <%- end -%>
+    </td>
+  </tr>
+  <tr>
+    <th><%= link_to "Meeting Rooms:", venue_meeting_rooms_path(@venue) %></th>
+    <td>
+      <table border="0">
+      <tr>
+        <th>Room Name:</th>
+        <th>Theatre:</th>
+        <th>Lunch/Dinner:</th>
+        <th>Dinner/Dance:</th>
+        <th>Length:</th>
+        <th>Width:</th>
+        <th>Area:</th>
+      </tr>
+      <%- for room in @venue.meeting_room -%>
+      <tr>
+        <td><%= link_to room.room_name, [@venue, room] %></td>
+        <td><%= room.theatre %></td>
+        <td><%= room.lunch_dinner %></td>
+        <td><%= room.dinner_dance %></td>
+        <td><%= room.length %>m</td>
+        <td><%= room.width %>m</td>
+        <td><%= room.area %>m<sup>2</sup></td>
+      </tr>
+      <%- end -%>
+      </table>
+    </td>
+  </tr>
+  <tr>
+    <th><%= link_to "Styles:", venue_styles_path(@venue) %></th>
+    <td>
+      <%- for style in @venue.style -%>
+      <%= link_to style.style, [@venue, style] %><br>
+      <%- end -%>
+    </td>
+  </tr>
+</table>
+<div id="map_canvas" style="width: 950px; height: 300px"></div>
+<%= link_to 'Edit', edit_venue_path(@venue) %> |
+<%= link_to 'Back', venues_path %>

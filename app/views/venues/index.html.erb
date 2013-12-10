@@ -1,0 +1,61 @@
+<div class="span-18">
+<h1>Listing all Venues</h1>
+<%= paginate @venues %>
+<table>
+	<tr>
+		<th colspan="7" style="text-align:right"><%= link_to 'Add New Venue', new_venue_path %></th>
+	</tr>
+	<tr>
+		<th><%= sort_link @search, :name, "Venue Name" %></th>
+		<th><%= sort_link @search, :meeting_capacity, "Meeting Capacity", :default_order => :desc %></th>
+		<th><%= sort_link @search, :catering_capacity, "Catering Capacity", :default_order => :desc %></th>
+		<th><%= sort_link @search, :room_hire_rates, "Room Hire Rates", :default_order => :asc %></th>
+		<th>Styles</th>
+		<th>Meeting<br>Rooms</th>
+		<th>Action</th>
+	</tr>
+	<%- for venue in @venues %>
+	<tr>
+		<td><%= link_to venue.name, venue_path(venue) %></td>
+		<td><%= venue.meeting_capacity %></td>
+		<td><%= venue.catering_capacity %></td>
+		<td><%= venue.room_hire_rates %></td>
+		<td>
+		  <%= link_to venue.style.size, venue_styles_path(venue) %>
+		</td>
+		<td>
+		  <%= link_to venue.meeting_room.size, venue_meeting_rooms_path(venue) %>
+		</td>
+		<td><%= link_to 'Edit', edit_venue_path(venue) %></td>
+	</tr>
+	<%- end %>
+</table>
+
+<%= paginate @venues %>
+</div>
+<div class="span-4 box last">
+<h2>Search</h2>
+<%= form_for @search do |f| %>
+	<%= f.label :name_contains %>
+	<%= f.text_field :name_contains, :size => 25 %><br />
+	<%= f.label :postcode_contains %>
+	<%= f.text_field :postcode_contains, :size => 25 %><br />
+	<%= f.label :city_contains %>
+	<%= f.text_field :city_contains, :size => 25 %><br />
+	<%= f.label :county_contains %>
+	<%= f.text_field :county_contains, :size => 25 %><br />
+	<%= f.label :style_style_in, 'Style type' %>
+    <ul style="list-style-type:none;margin-left:0;padding-left:0">
+    <% f.collection_checks :style_style_in, @styles, :style, :style, :class => 'headcheck' do |check| %>
+    	<li><%= check.box %> <%= check.label %></li>
+	<% end %>
+	</ul>
+	<%= f.label :catering_capacity_gt %>
+	<%= f.number_field :catering_capacity_gt, :size => 25 %><br />
+	<%= f.label :meeting_capacity_gt %>
+	<%= f.number_field :meeting_capacity_gt, :size => 25 %><br />
+	<%= f.label :room_hire_rates_lt %>
+	<%= f.number_field :room_hire_rates_lt, :size => 25 %><br />
+	<%= f.submit "Search" %>
+<% end %>
+</div>

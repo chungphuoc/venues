@@ -1,0 +1,145 @@
+<%= form_for [@venue, @meeting_room] do |f| %>
+  <% if @meeting_room.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@meeting_room.errors.count, "error") %> prohibited this Meeting Room from being saved:</h2>
+
+      <ul>
+      <% @meeting_room.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+    <th width="130">Room Name:</th>
+    <td><%= f.text_field :room_name, :size => 50 %></td>
+  </tr>
+  <tr>
+    <th>Suit:</th>
+    <td><%= f.text_field :suite, :size => 30 %></td>
+  </tr>
+  <tr>
+    <th>Floor:</th>
+    <td><%= f.text_field :floor, :size => 30 %></td>
+  </tr>
+  <tr>
+    <th>Lift:</th>
+    <td><%= f.select :lift, [['Yes','true'],['No','false']] %></td>
+  </tr>
+  <tr>
+    <th>Theatre:</th>
+    <td><%= f.text_field :theatre, :size => 10 %></td>
+  </tr>
+  <tr>
+    <th>Classroom:</th>
+    <td><%= f.text_field :classroom, :size => 10 %></td>
+  </tr>
+  <tr>
+    <th>Boardroom:</th>
+    <td><%= f.text_field :boardroom, :size => 10 %></td>
+  </tr>
+  <tr>
+    <th>U-shape:</th>
+    <td><%= f.text_field :ushape, :size => 10 %></td>
+  </tr>
+  <tr>
+    <th>Cabaret:</th>
+    <td><%= f.text_field :cabaret, :size => 10 %></td>
+  </tr>
+  <tr>
+    <th>Dinner / Dance:</th>
+    <td><%= f.text_field :dinner_dance, :size => 10 %></td>
+  </tr>
+  <tr>
+    <th>Lunch / Dinner:</th>
+    <td><%= f.text_field :lunch_dinner, :size => 10 %></td>
+  </tr>
+  <tr>
+    <th>Reception:</th>
+    <td><%= f.text_field :reception, :size => 10 %></td>
+  </tr>
+  <tr>
+    <th>Length:</th>
+    <td><%= f.text_field :length, :size => 10 %>m</td>
+  </tr>
+  <tr>
+    <th>Width:</th>
+    <td><%= f.text_field :width, :size => 10 %>m</td>
+  </tr>
+  <tr>
+    <th>Area:</th>
+    <td><%= f.text_field :area, :size => 10 %>m²</td>
+  </tr>
+  <tr>
+    <th>Max Height:</th>
+    <td><%= f.text_field :max_height, :size => 10 %>m</td>
+  </tr>
+  <tr>
+    <th>Min Height:</th>
+    <td><%= f.text_field :min_height, :size => 10 %>m</td>
+  </tr>
+  <tr>
+    <th>Door Height:</th>
+    <td><%= f.text_field :door_height, :size => 10 %>m</td>
+  </tr>
+  <tr>
+    <th>Door Width:</th>
+    <td><%= f.text_field :door_width, :size => 10 %>m</td>
+  </tr>
+  <tr>
+    <th>Tungsten:</th>
+    <td><%= f.select :tungsten, [['Yes','true'],['No','false']] %></td>
+  </tr>
+  <tr>
+    <th>Fluorescent:</th>
+    <td><%= f.select :fluorescent, [['Yes','true'],['No','false']] %></td>
+  </tr>
+  <tr>
+    <th>Halogen:</th>
+    <td><%= f.select :halogen, [['Yes','true'],['No','false']] %></td>
+  </tr>
+  <tr>
+    <th>Dimmers:</th>
+    <td><%= f.select :dimmers, [['Yes','true'],['No','false']] %></td>
+  </tr>
+  <tr>
+    <th>Controls:</th>
+    <td><%= f.select :controls, [['Yes','true'],['No','false']] %></td>
+  </tr>
+  <tr>
+    <th>Blackout:</th>
+    <td><%= f.select :blackout, [['Yes','true'],['No','false']] %></td>
+  </tr>
+  <tr>
+    <th>Windows:</th>
+    <td><%= f.select :windows, [['Yes','true'],['No','false']] %></td>
+  </tr>
+  <tr>
+    <th>Sound System:</th>
+    <td><%= f.select :sound_system, [['Yes','true'],['No','false']] %></td>
+  </tr>
+  <tr>
+    <th>Air Conditioning:</th>
+    <td><%= f.select :air_conditioning, [['Yes','true'],['No','false']] %></td>
+  </tr>
+  <tr>
+    <th>Phase:</th>
+    <td><%= f.select :phase, [['Yes','true'],['No','false']] %></td>
+  </tr>
+  <tr>
+    <th>Sockets:</th>
+    <td><%= f.text_field :sockets, :size => 10 %></td>
+  </tr>
+  <tr>
+    <th>Telephone Points:</th>
+    <td><%= f.text_field :telephone_points, :size => 10 %></td>
+  </tr>
+  <tr>
+    <th>&nbsp;</th>
+    <th><%= f.submit %> </th>
+  </tr>
+</table>
+<% end %>

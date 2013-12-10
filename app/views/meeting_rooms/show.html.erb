@@ -1,0 +1,133 @@
+<h1><%= link_to @venue.name, venue_path(@venue) %>: <%= @meeting_room.room_name %></h1>
+<p id="notice"><%= notice %></p>
+
+<table>
+  <tr>
+  	<th width="130">Room Name:</th>
+    <td><%= @meeting_room.room_name %> <%= link_to '(edit)', edit_venue_meeting_room_path(@venue, @meeting_room) %></td>
+  </tr>
+  <tr>
+  	<th>Suite:</th>
+    <td><%= @meeting_room.suite %></td>
+  </tr>
+  <tr>
+  	<th>Floor:</th>
+    <td><%= @meeting_room.floor %></td>
+  </tr>
+  <tr>
+  	<th>Lift:</th>
+    <td><%= @meeting_room.lift? ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+  	<th>Theatre:</th>
+    <td><%= @meeting_room.theatre %></td>
+  </tr>
+  <tr>
+  	<th>Classroom:</th>
+    <td><%= @meeting_room.classroom %></td>
+  </tr>
+  <tr>
+  	<th>Boardroom:</th>
+    <td><%= @meeting_room.boardroom %></td>
+  </tr>
+  <tr>
+  	<th>U-shape:</th>
+    <td><%= @meeting_room.ushape %></td>
+  </tr>
+  <tr>
+  	<th>Cabaret:</th>
+    <td><%= @meeting_room.cabaret %></td>
+  </tr>
+  <tr>
+    <th>Dinner / Dance</th>
+    <td><%= @meeting_room.dinner_dance %></td>
+  </tr>
+  <tr>
+  	<th>Lunch / Dinner</th>
+    <td><%= @meeting_room.lunch_dinner %></td>
+  </tr>
+  <tr>
+  	<th>Reception</th>
+    <td><%= @meeting_room.reception %></td>
+  </tr>
+  <tr>
+  	<th>Length</th>
+    <td><%= @meeting_room.length %>m</td>
+  </tr>
+  <tr>
+  	<th>Width</th>
+    <td><%= @meeting_room.width %>m</td>
+  </tr>
+  <tr>
+  	<th>Area</th>
+    <td><%= @meeting_room.area %>m²</td>
+  </tr>
+  <tr>
+  	<th>Max Height</th>
+    <td><%= @meeting_room.max_height %>m</td>
+  </tr>
+  <tr>
+  	<th>Min Height</th>
+    <td><%= @meeting_room.min_height %>m</td>
+  </tr>
+  <tr>
+  	<th>Door Height</th>
+    <td><%= @meeting_room.door_height %>m</td>
+  </tr>
+  <tr>
+  	<th>Door Width</th>
+    <td><%= @meeting_room.door_width %>m</td>
+  </tr>
+  <tr>
+  	<th>Tungsten</th>
+    <td><%= @meeting_room.tungsten? ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+  	<th>Fluorescent</th>
+    <td><%= @meeting_room.fluorescent? ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+  	<th>Halogen</th>
+    <td><%= @meeting_room.halogen? ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+  	<th>Dimmers</th>
+    <td><%= @meeting_room.dimmers? ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+  	<th>Controls</th>
+    <td><%= @meeting_room.controls? ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+  	<th>Blackout</th>
+    <td><%= @meeting_room.blackout? ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+  	<th>Windows</th>
+    <td><%= @meeting_room.windows? ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+  	<th>Sound System:</th>
+    <td><%= @meeting_room.sound_system? ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+  	<th>Air Conditioning</th>
+    <td><%= @meeting_room.air_conditioning? ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+  	<th>Phase</th>
+    <td><%= @meeting_room.phase? ? 'Yes' : 'No' %></td>
+  </tr>
+  <tr>
+  	<th>Sockets</th>
+    <td><%= @meeting_room.sockets %></td>
+  </tr>
+  <tr>
+  	<th>Telephone Points</th>
+    <td><%= @meeting_room.telephone_points %></td>
+  </tr>
+  <tr>
+    <th>Delete:</th>
+    <td><%= button_to 'Delete', [@venue, @meeting_room], :method => :delete, :confirm => "you sure?" %></td>
+  </tr>
+</table>
