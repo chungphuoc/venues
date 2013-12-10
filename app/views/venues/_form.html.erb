@@ -62,6 +62,14 @@
     <td><%= f.select :disabled_access, [['Yes','true'],['No','false']] %></td>
   </tr>
   <tr>
+    <th>Longitude:</th>
+    <td><%= f.text_field :lan, :size => 5 %></td>
+  </tr>
+  <tr>
+    <th>latitude:</th>
+    <td><%= f.text_field :lat, :size => 5 %></td>
+  </tr>
+  <tr>
     <th>Commission:</th>
     <td><%= f.text_field :commission, :size => 5 %></td>
   </tr>
