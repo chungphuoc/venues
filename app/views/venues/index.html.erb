@@ -13,6 +13,8 @@
 		<th>Styles</th>
     <th>Lat</th>
     <th>Lon</th>
+    <th>Image</th>
+    <th>date__venue</th>
 		<th>Meeting<br>Rooms</th>
 		<th>Action</th>
 	</tr>
@@ -30,6 +32,12 @@
     </td>
     <td>
       <%= venue.lat %>
+    </td>
+    <td>
+      <%= venue.image %>
+    </td>
+    <td>
+      <%= venue.date__venue.strftime("%Y-%m-%d") if venue.date__venue.present? %>
     </td>
 		<td>
 		  <%= link_to venue.meeting_room.size, venue_meeting_rooms_path(venue) %>
