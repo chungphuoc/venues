@@ -100,7 +100,7 @@ function initialize() {
   </tr>
   <tr>
     <th class="commission">image:</th>
-    <td class="commission"><%= @venue.image %></td>
+    <td class="commission"><%= image_tag @venue.image.to_s, :alt => "image venues" %></td>
   </tr>
   <tr>
     <th class="commission">Date venue:</th>
