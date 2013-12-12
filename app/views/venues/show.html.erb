@@ -1,4 +1,4 @@
-<script type="text/javascript"> 
+<script type="text/javascript">
 
 var map = null;
 var geocoder = null;
@@ -33,7 +33,7 @@ function initialize() {
   }
 }
 
-</script> 
+</script>
 <h1><%= link_to 'Venues', venues_path() %>: <%= @venue.name %></h1>
 <p id="notice"><%= notice %></p>
 
@@ -89,6 +89,22 @@ function initialize() {
   <tr>
     <th class="commission">Commission:</th>
     <td class="commission"><%= @venue.commission %></td>
+  </tr>
+  <tr>
+    <th class="commission">Lat:</th>
+    <td class="commission"><%= @venue.lat %></td>
+  </tr>
+  <tr>
+    <th class="commission">Lan:</th>
+    <td class="commission"><%= @venue.lan %></td>
+  </tr>
+  <tr>
+    <th class="commission">image:</th>
+    <td class="commission"><%= @venue.image %></td>
+  </tr>
+  <tr>
+    <th class="commission">Date venue:</th>
+    <td class="commission"><%= @venue.date__venue %></td>
   </tr>
   <tr>
     <th>Notes:</th>
