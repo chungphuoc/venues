@@ -34,7 +34,7 @@
       <%= venue.lat %>
     </td>
     <td>
-      <%= venue.image %>
+      <%= image_tag venue.image.to_s, :alt => "image venues", :size => "100x100" %></td>
     </td>
     <td>
       <%= venue.date__venue.strftime("%Y-%m-%d") if venue.date__venue.present? %>
